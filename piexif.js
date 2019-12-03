@@ -594,6 +594,10 @@ SOFTWARE.
                 } else {
                     data = value.slice(0, length);
                 }
+                
+                if (typeof data === "string") {
+                    data = Array.from(data).map(c => c.charCodeAt(0));
+                }
             } else if (t == 9) { // SLONG
                 if (length > 1) {
                     pointer = unpack(this.endian_mark + "L", value)[0];
